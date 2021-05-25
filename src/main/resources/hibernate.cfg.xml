@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.dialect">
+            org.hibernate.dialect.MySQLDialect
+        </property>
+        <property name="hibernate.connection.driver_class">
+            com.mysql.cj.jdbc.Driver
+        </property>
+        <!-- Assume test is the database name -->
+        <property name="hibernate.connection.url">
+            jdbc:mysql://localhost:3306/rest_file_storage
+        </property>
+        <property name="hibernate.connection.username">
+            exchanger
+        </property>
+        <property name="hibernate.connection.password">
+            exchanger
+        </property>
+        <property name="show_sql">true</property>
+        <mapping class="com.wikigreen.model.User"/>
+        <mapping class="com.wikigreen.model.Account"/>
+        <mapping class="com.wikigreen.model.File"/>
+        <mapping class="com.wikigreen.model.Event"/>
+    </session-factory>
+</hibernate-configuration>
