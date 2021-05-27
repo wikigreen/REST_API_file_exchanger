@@ -41,3 +41,5 @@ buildNumber.properties
 
 ### Gradle ###
 build/
+
+/run_tomcat.bat

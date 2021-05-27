@@ -41,7 +41,7 @@
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.22</version>
+      <version>8.0.15</version>
     </dependency>
 
     <dependency>
@@ -78,6 +78,39 @@
               <configFiles>src/main/resources/db/config/flyway.properties</configFiles>
             </configuration>
           </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>copy-dependencies</id>
+                <phase>package</phase>
+                <goals><goal>copy</goal></goals>
+                <configuration>
+                  <artifactItems>
+                    <artifactItem>
+                      <groupId>org.flywaydb</groupId>
+                      <artifactId>flyway-core</artifactId>
+                      <version>${org.flywaydb.version}</version>
+                      <destFileName>flyway.jar</destFileName>
+                    </artifactItem>
+                    <artifactItem>
+                      <groupId>mysql</groupId>
+                      <artifactId>mysql-connector-java</artifactId>
+                      <version>8.0.15</version>
+                      <destFileName>mysql.jar</destFileName>
+                    </artifactItem>
+                    <artifactItem>
+                      <groupId>com.heroku</groupId>
+                      <artifactId>webapp-runner</artifactId>
+                      <version>9.0.41.0</version>
+                      <destFileName>webapp-runner.jar</destFileName>
+                    </artifactItem>
+                  </artifactItems>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
         </plugins>
       </build>
     </profile>
@@ -87,18 +120,6 @@
     <finalName>REST_API_file_exchanger</finalName>
     <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.0.1</version>
-          <executions>
-            <execution>
-              <id>copy-dependencies</id>
-              <phase>package</phase>
-              <goals><goal>copy-dependencies</goal></goals>
-            </execution>
-          </executions>
-        </plugin>
 
         <plugin>
           <groupId>org.apache.tomcat.maven</groupId>
@@ -134,10 +155,6 @@
         <plugin>
           <artifactId>maven-resources-plugin</artifactId>
           <version>3.0.2</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
         </plugin>
         <plugin>
           <artifactId>maven-surefire-plugin</artifactId>
