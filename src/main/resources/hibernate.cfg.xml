@@ -12,7 +12,7 @@
         </property>
         <!-- Assume test is the database name -->
         <property name="hibernate.connection.url">
-            mysql://r6ze0q02l4me77k3.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/jtmosjyo6i6vemdh
+            jdbc:mysql://r6ze0q02l4me77k3.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/jtmosjyo6i6vemdh
         </property>
         <property name="hibernate.connection.username">
             k3v6dfq2o04qvq85
