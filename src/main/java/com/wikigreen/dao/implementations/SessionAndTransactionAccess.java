@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 public class SessionAndTransactionAccess {
     protected Session currentSession;
     protected Transaction currentTransaction;
-    protected SessionFactory sessionFactory;
+    protected static SessionFactory sessionFactory;
 
     public Session openCurrentSession() {
         currentSession = getSessionFactory().openSession();
@@ -30,9 +30,9 @@ public class SessionAndTransactionAccess {
         currentSession.close();
     }
 
-    private SessionFactory getSessionFactory() {
-        if (this.sessionFactory == null){
-            this.sessionFactory = new Configuration().configure().buildSessionFactory();
+    private static SessionFactory getSessionFactory() {
+        if (sessionFactory == null){
+            sessionFactory = new Configuration().configure().buildSessionFactory();
         }
         return sessionFactory;
     }
